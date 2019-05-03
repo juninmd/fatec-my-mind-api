@@ -11,7 +11,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get('/usuarios', async (req, res, next) => {
+  app.get('/usuario', async (req, res, next) => {
     try {
       const response = await usuariosDao.getAll();
       return res.send(response).status(200);
@@ -20,7 +20,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get('/usuarios/:id', async (req, res, next) => {
+  app.get('/usuario/:id', async (req, res, next) => {
     try {
       const response = await usuariosDao.getById(req.params.id);
       return res.send(response).status(200);
@@ -29,27 +29,27 @@ module.exports = (app) => {
     }
   });
 
-  app.post('/usuarios/', async (req, res, next) => {
+  app.post('/usuario/', async (req, res, next) => {
     try {
-      const response = await usuariosDao.post(req.body);
-      return res.send(response).status(201);
+      await usuariosDao.insert(req.body);
+      return res.send({}).status(201);
     } catch (error) {
       next(error);
     }
   });
 
-  app.put('/usuarios/:id', async (req, res, next) => {
+  app.put('/usuario/:id', async (req, res, next) => {
     try {
-      const response = await usuariosDao.put(req.body, req.params.id);
-      return res.send(response).status(200);
+      await usuariosDao.update(req.body);
+      return res.send({}).status(200);
     } catch (error) {
       next(error);
     }
   });
 
-  app.delete('/usuarios/:id', async (req, res, next) => {
+  app.delete('/usuario/:id', async (req, res, next) => {
     try {
-      await usuariosDao.deleteById(req.params.id);
+      await usuariosDao.delete(req.params.id);
       return res.send({}).status(204);
     } catch (error) {
       next(error);

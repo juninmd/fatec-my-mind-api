@@ -5,7 +5,7 @@ module.exports = {
     return (await mysql.executeString(`SELECT * FROM usuario WHERE email = '${email}' and senha = '${senha}'`)).content;
   },
   getById: async (id) => {
-    return (await mysql.executeString(`SELECT * FROM usuario WHERE id = ${id}`)).content;
+    return (await mysql.executeString(`SELECT * FROM usuario WHERE codigo = ${id}`)).content;
   },
   getAll: async () => {
     return (await mysql.executeString(`SELECT * FROM usuario`)).content;
@@ -14,9 +14,9 @@ module.exports = {
     return (await mysql.executeObject(`INSERT INTO usuario SET ?`, body)).content;
   },
   update: async (body) => {
-    return (await mysql.executeObject(`UPDATE usuario SET ? WHERE id = ${body.id}`, body)).content;
+    return (await mysql.executeObject(`UPDATE usuario SET ? WHERE codigo = ${body.codigo}`, body)).content;
   },
   delete: async (id) => {
-    return (await mysql.executeString(`DELETE FROM usuario WHERE id = ${id}`)).content;
+    return (await mysql.executeString(`DELETE FROM usuario WHERE codigo = ${id}`)).content;
   }
 };
