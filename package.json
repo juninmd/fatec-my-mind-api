@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint './**/*.js'",
-    "lint:fix": "eslint --fix './**/*.js'"
+    "lint:fix": "eslint --fix './**/*.js'",
+    "docker": "docker-compose up db"
   },
   "husky": {
     "hooks": {
