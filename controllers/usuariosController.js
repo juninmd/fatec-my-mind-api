@@ -11,7 +11,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get('/usuario', async (req, res, next) => {
+  app.get('/usuarios', async (req, res, next) => {
     try {
       const response = await usuariosDao.getAll();
       return res.send(response).status(200);
@@ -20,7 +20,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get('/usuario/:id', async (req, res, next) => {
+  app.get('/usuarios/:id', async (req, res, next) => {
     try {
       const response = await usuariosDao.getById(req.params.id);
       return res.send(response).status(200);
@@ -29,7 +29,7 @@ module.exports = (app) => {
     }
   });
 
-  app.post('/usuario/', async (req, res, next) => {
+  app.post('/usuarios/', async (req, res, next) => {
     try {
       await usuariosDao.insert(req.body);
       return res.send({}).status(201);
@@ -38,7 +38,7 @@ module.exports = (app) => {
     }
   });
 
-  app.put('/usuario/:id', async (req, res, next) => {
+  app.put('/usuarios/:id', async (req, res, next) => {
     try {
       await usuariosDao.update(req.body);
       return res.send({}).status(200);
@@ -47,7 +47,7 @@ module.exports = (app) => {
     }
   });
 
-  app.delete('/usuario/:id', async (req, res, next) => {
+  app.delete('/usuarios/:id', async (req, res, next) => {
     try {
       await usuariosDao.delete(req.params.id);
       return res.send({}).status(204);
